@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="Cart.css">
+</head>
+<body>
+
+  <div class="cart">
+    <h2>Shopping Cart</h2>
+    <ul class="cart-items">
+      <!-- Cart items will be dynamically added here -->
+    </ul>
+    <button class="btn">Checkout</button>
+    <script>
+        document.querySelector('.btn').addEventListener('click', function() {
+          // Redirect to the billing form page
+          window.location.href = "billing form.html";
+        });
+      </script>
+  </div>
+
+  <script>
+    // Retrieve cart items from localStorage
+    var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Get reference to the cart items UL element
+    var cartItemsList = document.querySelector('.cart-items');
+
+    // Loop through each item in the cart and create a list item for it
+    cartItems.forEach(function(item) {
+      var li = document.createElement('li');
+      li.textContent = item.name + ' - ' + item.price;
+      cartItemsList.appendChild(li);
+    });
+
+    // Add event listener to checkout button
+    document.querySelector('.checkout-button').addEventListener('click', function() {
+      // Redirect to checkout page or perform checkout logic
+      // For demonstration, we'll just log a message
+      console.log('Redirecting to checkout page...');
+    });
+  </script>
+  
+</body>
+</html>
